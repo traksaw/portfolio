@@ -2,8 +2,8 @@ import { ProjectCard } from "./ProjectCard"
 
 export function ProjectGrid() {
   return (
-    <section className="border-t border-stone-200 py-20">
-      <h2 className="mb-10 text-center font-serif text-3xl text-stone-900 sm:text-4xl">
+    <section className="border-t border-th-line py-20">
+      <h2 className="mb-10 text-center font-serif text-3xl text-th-heading sm:text-4xl">
         Featured Project
       </h2>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

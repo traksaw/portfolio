@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${instrumentSerif.variable} font-sans bg-stone-50 text-stone-900`}
+        className={`${dmSans.variable} ${instrumentSerif.variable} font-sans bg-th-surface text-th-body`}
       >
         <Navbar />
         <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-12">{children}</main>
