@@ -1,11 +1,13 @@
 import { ProjectCard } from "./ProjectCard"
+import { Section } from "./ui/Section"
+import { SectionHeading } from "./ui/SectionHeading"
 
 export function ProjectGrid() {
   return (
-    <section className="border-t border-th-line py-20">
-      <h2 className="mb-10 text-center font-serif text-3xl text-th-heading sm:text-4xl">
+    <Section>
+      <SectionHeading className="mb-10 text-center">
         Featured Project
-      </h2>
+      </SectionHeading>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <ProjectCard
           title="hit.it"
@@ -15,6 +17,6 @@ export function ProjectGrid() {
           githubLink="https://github.com/traksaw/hitit"
         />
       </div>
-    </section>
+    </Section>
   )
 }

@@ -1,5 +1,6 @@
 /* app/layout.tsx */
 import "./globals.css"
+import type { Metadata } from "next"
 import { DM_Sans, Instrument_Serif } from "next/font/google"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
@@ -19,9 +20,14 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-serif",
 })
 
-export const metadata = {
-  title: "Waskar Miguel Paulino | Portfolio",
-  description: "Software Engineer Portfolio",
+export const metadata: Metadata = {
+  title: {
+    default: "Waskar Paulino | CTO, Speaker, DJ",
+    template: "%s | Waskar Paulino",
+  },
+  description:
+    "I build AI tools for creative teams, write about the messy middle of founding a startup, and DJ on the weekends.",
+  metadataBase: new URL("https://waskarmiguelpaulino.netlify.app"),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

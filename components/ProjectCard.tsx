@@ -1,3 +1,5 @@
+import { Badge } from "./ui/Badge"
+
 interface ProjectCardProps {
   title: string
   description: string
@@ -11,14 +13,9 @@ export function ProjectCard({ title, description, techStack, liveLink, githubLin
     <div className="group rounded-xl border border-th-line bg-th-surface-card p-6 transition-all duration-200 hover:border-th-line-hover hover:shadow-lg hover:shadow-th-shadow">
       <h3 className="font-serif text-xl text-th-heading">{title}</h3>
       <p className="mt-2 text-th-body leading-relaxed">{description}</p>
-      <div className="mt-4 flex flex-wrap gap-2 text-xs">
-        {techStack.map((tech, index) => (
-          <span
-            key={index}
-            className="rounded-full bg-th-surface-badge px-3 py-1 font-medium text-th-muted"
-          >
-            {tech}
-          </span>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {techStack.map((tech) => (
+          <Badge key={tech}>{tech}</Badge>
         ))}
       </div>
       <div className="mt-5 flex gap-4 text-sm font-medium">

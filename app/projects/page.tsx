@@ -1,4 +1,12 @@
+import type { Metadata } from "next"
+
 import { ProjectGrid } from "@/components/ProjectGrid"
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Full stack builds, creative collaborations, and community-driven tools by Waskar Paulino.",
+}
 
 export default function ProjectsPage() {
   return (

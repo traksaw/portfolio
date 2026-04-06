@@ -1,3 +1,13 @@
+import type { Metadata } from "next"
+
+import { ButtonLink } from "@/components/ui/ButtonLink"
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Waskar Paulino for speaking inquiries, collaborations, or just to say hi.",
+}
+
 export default function ContactPage() {
   return (
     <section className="mx-auto max-w-2xl py-16 text-center">
@@ -9,12 +19,9 @@ export default function ContactPage() {
         just want to say hi — I&apos;d love to hear from you.
       </p>
       <div className="mt-10">
-        <a
-          href="mailto:workwithwaskar@gmail.com"
-          className="inline-block rounded-full bg-th-btn px-8 py-3.5 text-sm font-semibold tracking-wide text-th-btn-text transition-all duration-200 hover:bg-th-btn-hover hover:shadow-lg hover:shadow-th-shadow"
-        >
+        <ButtonLink href="mailto:workwithwaskar@gmail.com" external>
           Send Me an Email
-        </a>
+        </ButtonLink>
       </div>
     </section>
   )

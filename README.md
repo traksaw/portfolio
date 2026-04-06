@@ -1,37 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Waskar Paulino -- Personal Portfolio
+
+A multi-purpose personal site for hiring managers, conference organizers, and readers/followers. Built with Next.js 15, React 19, and Tailwind v4.
+
+Live: [waskarmiguelpaulino.netlify.app](https://waskarmiguelpaulino.netlify.app)
+
+---
+
+## Pages
+
+| Route | Purpose | Status |
+|-------|---------|--------|
+| `/` | Hero, about preview, featured projects | In progress |
+| `/projects` | Full project showcase | Placeholder |
+| `/speaking` | Talk list, abstracts, booking CTA | Planned |
+| `/writing` | Substack/Medium feed or curated links | Planned |
+| `/about` | Full story (bodega to DJ to engineer to CTO) | Placeholder |
+| `/contact` | Speaking inquiries and general contact | Placeholder |
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router, Turbopack)
+- **UI**: React 19, Tailwind v4
+- **Fonts**: DM Sans (body), Instrument Serif (headings)
+- **Design system**: Semantic `th-*` CSS custom properties with automatic light/dark mode via `prefers-color-scheme`
+
+## Project Structure
+
+```
+app/
+  layout.tsx          Root layout (fonts, nav, footer)
+  globals.css         Design tokens and global styles
+  page.tsx            Homepage
+  about/page.tsx
+  contact/page.tsx
+  projects/page.tsx
+
+components/
+  ui/                 Reusable UI primitives
+    Badge.tsx         Tag/pill component
+    ButtonLink.tsx    Link styled as button (primary/secondary/ghost)
+    Section.tsx       Section wrapper with optional border
+    SectionHeading.tsx  Serif heading for sections
+  Hero.tsx            Homepage hero section
+  AboutPreview.tsx    Homepage about teaser
+  ProjectCard.tsx     Individual project card
+  ProjectGrid.tsx     Project card grid
+  Navbar.tsx          Sticky nav with mobile menu
+  Footer.tsx          Site footer with social links
+
+docs/
+  PORTFOLIO-REBUILD-PLAN.md   Full rebuild plan and roadmap
+
+public/
+  headshot.jpg        Professional headshot (add manually)
+```
+
+## Design Tokens
+
+The site uses semantic color tokens defined in `globals.css` that switch automatically between light and dark mode. All tokens use the `th-` prefix to avoid collisions with Tailwind built-in utilities.
+
+Key tokens: `th-surface`, `th-heading`, `th-body`, `th-muted`, `th-btn`, `th-accent`, `th-line`.
+
+See `app/globals.css` for the full token list and values.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# portfolio
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start dev server (Turbopack) |
+| `pnpm build` | Production build |
+| `pnpm start` | Serve production build |
+| `pnpm lint` | Run ESLint |
