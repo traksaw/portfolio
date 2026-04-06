@@ -426,4 +426,130 @@ LINKS:
 
 ---
 
+## Phase 9: Design Polish & Interactions (Inspiration-driven)
+
+Insights sourced from top designer portfolio analysis (Rachel How, Adrian Zumbrunnen, Jordan Gilroy, Daniel Gamble, Olha Uzhykova, Shabnam Kashani, Constance S, Michal Malewicz).
+
+### 9.0 Animation Tech Stack
+
+Complement existing Next.js 15 + React 19 + Tailwind v4 with:
+
+| Library | Purpose | Install |
+|---------|---------|---------|
+| **Framer Motion** | Scroll-triggered reveals, staggered children, hover animations, page transitions, layout animations | `pnpm add framer-motion` |
+| **GSAP + ScrollTrigger** | Character-level text animation, timeline sequences, progress-based scroll animations, batch reveals | `pnpm add gsap @gsap/react` |
+| **Lenis** | Buttery smooth scroll with configurable lerp/duration, GSAP integration | `pnpm add lenis` |
+| **React Three Fiber** | Declarative 3D scenes in React — hero backgrounds, particle fields, interactive geometry | `pnpm add @react-three/fiber three` |
+| **Drei** | R3F helpers — Float, Stars, Sparkles, ScrollControls, MeshDistortMaterial, Text3D | `pnpm add @react-three/drei` |
+
+**Framer Motion** — best for:
+- `whileInView` scroll reveals with `viewport={{ once: true }}`
+- Staggered children via `variants` with `staggerChildren: 0.1`
+- `whileHover` / `whileTap` micro-interactions
+- `layoutId` shared element transitions between pages
+- `AnimatePresence` for page exit animations
+
+**GSAP** — best for:
+- Character-level text splitting + stagger (`SplitText` or manual)
+- Complex timelines with `gsap.timeline()` and precise positioning (`"-=0.3"`)
+- `ScrollTrigger.batch()` for animating groups of elements as they enter viewport
+- `gsap.context()` + `useGSAP` hook for React cleanup
+- Progress-based scroll animations (`scrub: true`)
+
+**Lenis** — best for:
+- Smooth scroll wrapper via `<ReactLenis root />` in layout
+- `useLenis` hook for scroll callbacks
+- GSAP ticker integration (`autoRaf: false` + `gsap.ticker.add`)
+- Config: `lerp: 0.1`, `wheelMultiplier: 0.7`, `duration: 1.2`
+
+**React Three Fiber + Drei** — best for:
+- `<Canvas>` with dynamic import (`next/dynamic`, `ssr: false`) to avoid SSR issues
+- `useFrame` render loop for continuous animation (rotation, wave, pulse)
+- `<Float>` wrapper for gentle floating motion on 3D elements
+- `<Sparkles>` / `<Stars>` for ambient particle backgrounds
+- `<MeshDistortMaterial>` / `<MeshWobbleMaterial>` for organic, living geometry
+- `<ScrollControls>` + `useScroll` for scroll-synced 3D scenes (`scroll.offset`, `scroll.range()`, `scroll.curve()`)
+- `frameloop="demand"` for performance when scene is mostly static
+- Mouse interaction via `onPointerOver` / `onPointerOut` on meshes
+
+### 9.1 Three.js / 3D Elements
+
+Ideas for tasteful 3D integration (pick 1-2, don't overdo):
+
+- [ ] **Particle field hero** — ambient floating particles (`<Stars>` or `<Sparkles>`) behind hero text, subtle mouse parallax via `useFrame` + pointer state
+- [ ] **Distort sphere** — `<MeshDistortMaterial distort={0.4} speed={2}>` organic blob that reacts to mouse, sits beside hero text or as background element
+- [ ] **Floating geometry** — `<Float speed={2} rotationIntensity={1}>` on abstract shapes (torus, icosahedron) as section accents
+- [ ] **Scroll-synced 3D** — `<ScrollControls pages={3}>` + `useScroll` to rotate/transform geometry as user scrolls through homepage sections
+- [ ] **3D turntable/waveform** — DJ-themed element: vinyl record or audio waveform mesh that responds to scroll position — on-brand for your creative identity
+- [ ] **Wobble cards** — `<MeshWobbleMaterial>` on project card backgrounds for liquid/organic feel on hover
+- [ ] **3D text** — `<Text3D>` for hero name or section headers with depth and lighting
+
+Implementation notes:
+- Always wrap `<Canvas>` in `next/dynamic(() => import(...), { ssr: false })` — Three.js needs browser APIs
+- Use `frameloop="demand"` when scene is static to save battery/GPU
+- Keep triangle count low — portfolio should load fast, not flex on GPU
+- Consider `<Suspense fallback={null}>` around 3D scenes for graceful loading
+- Test on mobile — disable or simplify 3D on `< 768px` if performance suffers
+
+### 9.2 Micro-Interactions
+
+- [ ] **Hover lift on cards** — `hover:-translate-y-1 hover:shadow-lg transition-all duration-300` (Rachel How, Olha)
+- [ ] **Image overlay on hover** — `group` parent + `opacity-0 group-hover:opacity-100` dark overlay revealing title + description (Olha)
+- [ ] **Typing/reveal animation** — CSS typed-cursor effect on hero tagline (Rachel How)
+- [ ] **Confetti easter egg** — canvas particle burst on memoji or name click — fits DJ/creative brand (Rachel How)
+- [ ] **Wobble on hover** — subtle rotation keyframe (0 to 5deg) on interactive elements (Rachel How)
+- [ ] **Frosted glass cards** — `backdrop-blur-[20px] saturate-[180%]` on card components (Rachel How)
+- [ ] **Staggered animations** — Framer Motion `variants` with `staggerChildren: 0.1` for section reveals
+- [ ] **Custom cursor** — subtle cursor changes on interactive elements (pointer glow, scale)
+- [ ] **Scroll-triggered animations** — Framer Motion `whileInView` or GSAP `ScrollTrigger.batch()` for element reveals
+- [ ] **Character-level text animation** — GSAP text split with 0.2s stagger on hero heading (Jordan Gilroy)
+- [ ] **Hover text swap** — `yPercent: -100 / 100` character displacement on links (Jordan Gilroy)
+
+### 9.3 Layout & Structure
+
+- [ ] **Image-first project cards** — screenshot as primary visual, text secondary (Adrian, Olha)
+- [ ] **Horizontal scroll** for project showcases (alternative to grid layout)
+- [ ] **Generous whitespace** — bump section padding to `py-16` or `py-20` between major sections (Adrian Zumbrunnen)
+- [ ] **Testimonial/quote strip** — pull quotes from event organizers on Speaking page (Olha)
+- [ ] **Service/identity cards** — grid with consistent formatting, icon + description + CTA (Olha)
+- [ ] **Numbered project cards** — `[01]` through `[06]` with service tags for structure (Jordan Gilroy)
+- [ ] **Marquee text loop** — infinite horizontal scroll of keywords/skills, pauses on hover (Daniel Gamble)
+
+### 9.4 Typography & Personality
+
+- [ ] **Mixed font stack** — pair `Instrument Serif` with a mono font for code/tech sections (Rachel How)
+- [ ] **Lowercase casual intro** — personality through case and punctuation, e.g. "hi. i'm waskar." (Adrian Zumbrunnen)
+- [ ] **Punctuation as emphasis** — use punctuation/structure for impact instead of color (Olha)
+- [ ] **Typography-first design** — bolder, more generous sizing throughout
+- [ ] **Project tags** — make `techStack` pills more visual (colored, rounded badges)
+- [ ] **Fluid typography** — `clamp()` for seamless scaling without breakpoint jumps (Jordan Gilroy)
+- [ ] **Vertical text** — `writing-mode: vertical-rl` for section labels or service titles (Daniel Gamble)
+
+### 9.5 Page Experience
+
+- [ ] **Smooth scroll** — Lenis `<ReactLenis root />` in layout with `lerp: 0.1` for buttery feel
+- [ ] **Page transitions** — Framer Motion `AnimatePresence` + `layoutId` for shared element transitions between routes
+- [ ] **Orchestrated loading** — two-layer overlay reveal on first visit, fast version on return via `sessionStorage` (Daniel Gamble)
+- [ ] **Scroll-synced nav** — active nav link background animates based on scroll position (Jordan Gilroy)
+- [ ] **Live local time** — show current time in footer or header, refreshes every 60s (Daniel Gamble)
+
+### 9.6 Content & Authenticity
+
+- [ ] **Live project links + case studies** — prioritize working demos over descriptions
+- [ ] **Personal touches** — integrate interests (currently listening to, reading, DJ sets) for authenticity
+- [ ] **Easter egg** — confetti burst or wobble on memoji/name — fits "DJ + creative" brand
+- [ ] **Cross-link related work** — link related projects at end of case studies (Shabnam Kashani)
+- [ ] **Text-only project list** — radical simplicity option: just project names as links, let client names sell (Shabnam Kashani)
+- [ ] **First visit vs return** — different animation pacing based on `sessionStorage('visited')` (Daniel Gamble)
+
+### 9.7 Already Nailed
+
+- Extreme minimalism with stone+amber design system ✓
+- Frosted glass nav with `backdrop-blur-xl` on scroll ✓
+- Minimal color palette (2-3 colors + strategic accents) ✓
+- Dark theme matching creative technologist aesthetic ✓
+- Social icons with hover lift + amber glow ✓
+
+---
+
 *Created: 2026-04-05*
