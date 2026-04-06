@@ -1,7 +1,9 @@
 export function Footer() {
   return (
-    <footer className="w-full py-6 mt-12 border-t text-center text-sm text-gray-500">
-      <p>&copy; {new Date().getFullYear()} Waskar Miguel Paulino. All rights reserved.</p>
+    <footer className="border-t border-stone-200 py-8 text-center">
+      <p className="text-sm text-stone-400">
+        &copy; {new Date().getFullYear()} Waskar Miguel Paulino. All rights reserved.
+      </p>
     </footer>
   )
 }
