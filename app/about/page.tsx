@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 
 import { ButtonLink } from "@/components/ui/ButtonLink"
+import { PageHeader } from "@/components/ui/PageHeader"
 
 export const metadata: Metadata = {
   title: "About",
@@ -23,8 +24,8 @@ export default function AboutPage() {
         />
       </div>
 
-      <h1 className="font-serif text-4xl text-th-heading sm:text-5xl">About Me</h1>
-      <div className="mt-2 h-[2px] w-12 bg-th-accent" />
+      <PageHeader title="About Me" />
+
       <p className="mt-8 text-lg leading-relaxed text-th-body">
         Hey! I&apos;m Waskar — a software engineer, community builder, and
         creative technologist. My journey began as an Apple Genius, where I

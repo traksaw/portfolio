@@ -11,7 +11,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <Tag
-      className={`font-serif text-3xl text-th-heading sm:text-4xl ${className}`}
+      className={`text-3xl font-bold text-th-heading sm:text-4xl ${className}`}
     >
       {children}
     </Tag>

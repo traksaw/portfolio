@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import { ButtonLink } from "@/components/ui/ButtonLink"
+import { PageHeader } from "@/components/ui/PageHeader"
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,15 +11,13 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto max-w-2xl py-16 text-center">
-      <h1 className="font-serif text-4xl text-th-heading sm:text-5xl">
-        Get in Touch
-      </h1>
-      <p className="mx-auto mt-4 max-w-md text-lg text-th-body">
-        Whether you&apos;re interested in working together, have a question, or
-        just want to say hi — I&apos;d love to hear from you.
-      </p>
-      <div className="mt-10">
+    <section className="mx-auto max-w-2xl py-16">
+      <PageHeader
+        title="Get in Touch"
+        description="Whether you're interested in working together, have a question, or just want to say hi — I'd love to hear from you."
+        centered
+      />
+      <div className="mt-10 text-center">
         <ButtonLink href="mailto:workwithwaskar@gmail.com" external>
           Send Me an Email
         </ButtonLink>

@@ -12,11 +12,11 @@ interface ButtonLinkProps {
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    "bg-th-btn text-th-btn-text hover:bg-th-btn-hover hover:shadow-lg hover:shadow-th-shadow",
+    "bg-th-btn text-th-btn-text hover:bg-th-btn-hover hover:shadow-lg hover:shadow-th-shadow hover:-translate-y-0.5",
   secondary:
-    "border border-th-line text-th-heading hover:border-th-line-hover hover:bg-th-surface-card",
+    "border border-th-line text-th-heading hover:border-th-line-hover hover:bg-th-surface-card hover:-translate-y-0.5",
   ghost:
-    "border border-th-line-hover text-th-muted hover:border-th-heading hover:text-th-heading",
+    "border border-th-line-hover text-th-muted hover:border-th-heading hover:text-th-heading hover:-translate-y-0.5",
 }
 
 const base =

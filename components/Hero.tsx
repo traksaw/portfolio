@@ -3,11 +3,11 @@ import { ButtonLink } from "./ui/ButtonLink"
 export function Hero() {
   return (
     <section className="py-24 text-center sm:py-32">
-      <h1 className="font-serif text-5xl leading-tight text-th-heading sm:text-6xl lg:text-7xl">
+      <h1 className="text-5xl font-bold leading-tight text-th-heading sm:text-6xl lg:text-7xl">
         Waskar Paulino
       </h1>
 
-      <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em] text-th-muted">
+      <p className="mt-4 text-base font-medium text-th-muted">
         CTO &amp; Co-Founder,{" "}
         <a
           href="https://ideatebetter.com/"
