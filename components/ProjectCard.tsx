@@ -4,8 +4,8 @@ interface ProjectCardProps {
   title: string
   description: string
   techStack: string[]
-  liveLink: string
-  githubLink: string
+  liveLink?: string
+  githubLink?: string
 }
 
 export function ProjectCard({ title, description, techStack, liveLink, githubLink }: ProjectCardProps) {
@@ -19,22 +19,26 @@ export function ProjectCard({ title, description, techStack, liveLink, githubLin
         ))}
       </div>
       <div className="mt-5 flex gap-4 text-sm font-medium">
-        <a
-          href={liveLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-th-heading underline decoration-th-line-hover underline-offset-4 transition-colors hover:decoration-th-accent"
-        >
-          Live Site
-        </a>
-        <a
-          href={githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-th-heading underline decoration-th-line-hover underline-offset-4 transition-colors hover:decoration-th-accent"
-        >
-          GitHub
-        </a>
+        {liveLink && (
+          <a
+            href={liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-th-heading underline decoration-th-line-hover underline-offset-4 transition-colors hover:decoration-th-accent"
+          >
+            Live Site
+          </a>
+        )}
+        {githubLink && (
+          <a
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-th-heading underline decoration-th-line-hover underline-offset-4 transition-colors hover:decoration-th-accent"
+          >
+            GitHub
+          </a>
+        )}
       </div>
     </div>
   )
