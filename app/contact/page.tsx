@@ -1,14 +1,17 @@
 export default function ContactPage() {
   return (
-    <section className="max-w-2xl mx-auto py-16">
-      <h1 className="text-4xl font-bold mb-6 text-center">Get in Touch</h1>
-      <p className="text-lg text-gray-700 mb-6 text-center">
-        Whether you&apos;re interested in working together, have a question, or just want to say hi — I&apos;d love to hear from you.
+    <section className="mx-auto max-w-2xl py-16 text-center">
+      <h1 className="font-serif text-4xl text-stone-900 sm:text-5xl">
+        Get in Touch
+      </h1>
+      <p className="mx-auto mt-4 max-w-md text-lg text-stone-500">
+        Whether you&apos;re interested in working together, have a question, or
+        just want to say hi — I&apos;d love to hear from you.
       </p>
-      <div className="text-center">
+      <div className="mt-10">
         <a
           href="mailto:workwithwaskar@gmail.com"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-blue-700 transition"
+          className="inline-block rounded-full bg-stone-900 px-8 py-3.5 text-sm font-semibold tracking-wide text-stone-100 transition-all duration-200 hover:bg-stone-800 hover:shadow-lg hover:shadow-stone-900/20"
         >
           Send Me an Email
         </a>

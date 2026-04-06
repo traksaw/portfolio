@@ -1,15 +1,26 @@
 export default function AboutPage() {
   return (
-    <section className="max-w-3xl mx-auto py-16">
-      <h1 className="text-4xl font-bold mb-6">About Me</h1>
-      <p className="text-lg text-gray-700 mb-4">
-        Hey! I&apos;m Waskar — a software engineer, community builder, and creative technologist. My journey began as an Apple Genius, where I learned the power of empathy, storytelling, and the intersection of tech and people. That foundation led me into full stack development and tech education.
+    <section className="mx-auto max-w-3xl py-16">
+      <h1 className="font-serif text-4xl text-stone-900 sm:text-5xl">About Me</h1>
+      <div className="mt-2 h-[2px] w-12 bg-amber-400" />
+      <p className="mt-8 text-lg leading-relaxed text-stone-500">
+        Hey! I&apos;m Waskar — a software engineer, community builder, and
+        creative technologist. My journey began as an Apple Genius, where I
+        learned the power of empathy, storytelling, and the intersection of tech
+        and people. That foundation led me into full stack development and tech
+        education.
       </p>
-      <p className="text-lg text-gray-700 mb-4">
-        Today, I build tools and experiences that uplift underrepresented communities, champion collaborative learning, and blend art with engineering. Whether I’m launching apps, spinning at a DJ gig, or mentoring folks breaking into tech — everything I do centers people and impact.
+      <p className="mt-6 text-lg leading-relaxed text-stone-500">
+        Today, I build tools and experiences that uplift underrepresented
+        communities, champion collaborative learning, and blend art with
+        engineering. Whether I&apos;m launching apps, spinning at a DJ gig, or
+        mentoring folks breaking into tech — everything I do centers people and
+        impact.
       </p>
-      <p className="text-lg text-gray-700">
-        I’m always open to new opportunities, creative partnerships, or just a good conversation. Let’s connect and make something meaningful together.
+      <p className="mt-6 text-lg leading-relaxed text-stone-500">
+        I&apos;m always open to new opportunities, creative partnerships, or just
+        a good conversation. Let&apos;s connect and make something meaningful
+        together.
       </p>
     </section>
   )
