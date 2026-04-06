@@ -426,4 +426,31 @@ LINKS:
 
 ---
 
+## Phase 9: Design Polish & Interactions (Inspiration-driven)
+
+Insights sourced from top designer portfolio analysis.
+
+### 9.1 Quick Wins
+
+- [ ] **Hover previews on project cards** — show screenshot/image on hover
+- [ ] **Staggered animations** — fade-in elements with slight delays for visual rhythm
+- [ ] **Project tags** — make `techStack` pills more visual (colored, rounded badges)
+- [ ] **Custom cursor** — subtle cursor changes on interactive elements (pointer glow, scale)
+
+### 9.2 Bigger Enhancements
+
+- [ ] **Horizontal scroll** for project showcases (alternative to grid layout)
+- [ ] **Typography-first design** — bolder, more generous sizing throughout
+- [ ] **Live project links + case studies** — prioritize working demos over descriptions
+- [ ] **Personal touches** — integrate interests (currently listening to, reading, DJ sets) for authenticity
+- [ ] **Scroll-triggered animations** — elements animate into view as user scrolls
+
+### 9.3 Already Nailed
+
+- Extreme minimalism with stone+amber design system ✓
+- Frosted glass nav with `backdrop-blur-xl` on scroll ✓
+- Minimal color palette (2-3 colors + strategic accents) ✓
+
+---
+
 *Created: 2026-04-05*
