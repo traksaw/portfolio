@@ -34,3 +34,22 @@ export const identityLanes: IdentityLane[] = [
     href: "/writing",
   },
 ]
+
+// -- Talks (homepage strip + speaking page) ----------------
+
+export interface Talk {
+  title: string
+  description: string
+  date: string // ISO 8601 (e.g. "2026-05-10")
+  venue: string
+  url?: string
+}
+
+export const talks: Talk[] = []
+
+export function getNextTalk(): Talk | null {
+  const now = Date.now()
+  return (
+    talks.find((t) => new Date(t.date).getTime() > now) ?? null
+  )
+}
