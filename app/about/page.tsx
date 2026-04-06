@@ -1,8 +1,31 @@
+import type { Metadata } from "next"
+import Image from "next/image"
+
+import { ButtonLink } from "@/components/ui/ButtonLink"
+import { PageHeader } from "@/components/ui/PageHeader"
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "From a bodega in Philly to CTO of Ideate -- the story of Waskar Paulino.",
+}
+
 export default function AboutPage() {
   return (
     <section className="mx-auto max-w-3xl py-16">
-      <h1 className="font-serif text-4xl text-th-heading sm:text-5xl">About Me</h1>
-      <div className="mt-2 h-[2px] w-12 bg-th-accent" />
+      <div className="mb-10 h-72 w-48 overflow-hidden rounded-2xl shadow-lg shadow-th-shadow sm:h-80 sm:w-56">
+        <Image
+          src="/headshot.PNG"
+          alt="Waskar Paulino"
+          width={224}
+          height={320}
+          priority
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      <PageHeader title="About Me" />
+
       <p className="mt-8 text-lg leading-relaxed text-th-body">
         Hey! I&apos;m Waskar — a software engineer, community builder, and
         creative technologist. My journey began as an Apple Genius, where I
@@ -22,6 +45,9 @@ export default function AboutPage() {
         a good conversation. Let&apos;s connect and make something meaningful
         together.
       </p>
+      <div className="mt-10">
+        <ButtonLink href="/contact">Get in touch</ButtonLink>
+      </div>
     </section>
   )
 }
