@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/*
+ * ──────────────────────────────────────────────────────────
+ * DESIGN TOKENS — Semantic Color System
+ * ──────────────────────────────────────────────────────────
+ *
+ * All tokens use the `th-` prefix to avoid Tailwind v4 utility collisions.
+ * Tokens are defined as CSS variables, then mapped to Tailwind via @theme inline.
+ * Dark mode switches automatically via prefers-color-scheme (no JS needed).
+ *
+ * Usage in components:
+ *   bg-th-surface        → page background
+ *   bg-th-surface-card   → card / elevated surface
+ *   bg-th-surface-badge  → badge / tag background
+ *   text-th-heading      → headings (h1–h6)
+ *   text-th-body         → body / paragraph text
+ *   text-th-muted        → subtle / secondary text
+ *   border-th-line       → borders & dividers
+ *   border-th-line-hover → border hover state
+ *   bg-th-btn            → primary button background
+ *   text-th-btn-text     → primary button text
+ *   bg-th-btn-hover      → primary button hover
+ *   bg-th-accent         → amber accent (same in both modes)
+ *   shadow-th-shadow     → card / element shadows
+ *
+ * Navbar & Footer are NOT themed — they stay dark (stone-950) in both modes.
+ *
+ * To add a new token:
+ *   1. Add --th-<name> to :root (light) and the dark media query
+ *   2. Add --color-th-<name>: var(--th-<name>) to @theme inline
+ *   3. Use as bg-th-<name>, text-th-<name>, border-th-<name>, etc.
+ * ──────────────────────────────────────────────────────────
+ */
+
 :root {
   --th-surface: #fafaf9;
   --th-surface-card: #ffffff;
