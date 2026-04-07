@@ -1,0 +1,136 @@
+<h2>Featured Content Strip — Layout Approaches</h2>
+<p class="subtitle">Pick the layout that feels right for the homepage. Each shows: latest writing post, next talk (when available), and most recent GitHub repo.</p>
+
+<div class="cards">
+
+  <!-- Option A: Horizontal Row -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="padding: 20px; background: #1c1917; border-radius: 8px; font-family: system-ui;">
+        <div style="text-align: center; margin-bottom: 16px;">
+          <span style="color: #fbbf24; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Latest</span>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <!-- Writing -->
+          <div style="flex: 1; background: #292524; border-radius: 8px; padding: 14px; border-left: 3px solid #fbbf24;">
+            <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">✏️ Writing</div>
+            <div style="font-size: 12px; color: #f5f5f4; font-weight: 600; margin-bottom: 4px;">The Bodega Cat Runs the Place</div>
+            <div style="font-size: 10px; color: #78716c;">Mar 15, 2026 · Substack</div>
+          </div>
+          <!-- Talk -->
+          <div style="flex: 1; background: #292524; border-radius: 8px; padding: 14px; border-left: 3px solid #fbbf24;">
+            <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🎤 Speaking</div>
+            <div style="font-size: 12px; color: #f5f5f4; font-weight: 600; margin-bottom: 4px;">AI in Creative Workflows</div>
+            <div style="font-size: 10px; color: #78716c;">Apr 20, 2026 · PhillyJS</div>
+          </div>
+          <!-- GitHub -->
+          <div style="flex: 1; background: #292524; border-radius: 8px; padding: 14px; border-left: 3px solid #fbbf24;">
+            <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🔨 Code</div>
+            <div style="font-size: 12px; color: #f5f5f4; font-weight: 600; margin-bottom: 4px;">my-portfolio</div>
+            <div style="font-size: 10px; color: #78716c;">Updated 2 days ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Horizontal Row</h3>
+      <p>Three equal cards in a row. Clean, balanced. Collapses to a vertical stack on mobile. Each card links out to the source.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Compact Ticker -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="padding: 20px; background: #1c1917; border-radius: 8px; font-family: system-ui;">
+        <div style="background: #292524; border-radius: 8px; padding: 16px 20px;">
+          <div style="font-size: 10px; color: #fbbf24; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 12px;">Latest</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Item 1 -->
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 10px; color: #78716c; width: 60px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 1px;">Writing</span>
+              <span style="font-size: 13px; color: #f5f5f4; font-weight: 500;">The Bodega Cat Runs the Place</span>
+              <span style="font-size: 10px; color: #78716c; margin-left: auto; flex-shrink: 0;">Mar 15</span>
+            </div>
+            <!-- Item 2 -->
+            <div style="display: flex; align-items: center; gap: 10px; border-top: 1px solid #3a3530; padding-top: 10px;">
+              <span style="font-size: 10px; color: #78716c; width: 60px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 1px;">Speaking</span>
+              <span style="font-size: 13px; color: #f5f5f4; font-weight: 500;">AI in Creative Workflows — PhillyJS</span>
+              <span style="font-size: 10px; color: #78716c; margin-left: auto; flex-shrink: 0;">Apr 20</span>
+            </div>
+            <!-- Item 3 -->
+            <div style="display: flex; align-items: center; gap: 10px; border-top: 1px solid #3a3530; padding-top: 10px;">
+              <span style="font-size: 10px; color: #78716c; width: 60px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 1px;">Code</span>
+              <span style="font-size: 13px; color: #f5f5f4; font-weight: 500;">my-portfolio</span>
+              <span style="font-size: 10px; color: #78716c; margin-left: auto; flex-shrink: 0;">2d ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Compact List</h3>
+      <p>Single card with a stacked list of items. Minimal footprint, feels like a changelog or activity feed. Easy to scan quickly.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Asymmetric Feature -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="padding: 20px; background: #1c1917; border-radius: 8px; font-family: system-ui;">
+        <div style="text-align: center; margin-bottom: 16px;">
+          <span style="color: #fbbf24; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Latest</span>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <!-- Featured (writing - large) -->
+          <div style="flex: 2; background: #292524; border-radius: 8px; padding: 18px; border-top: 3px solid #fbbf24;">
+            <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">✏️ New Post</div>
+            <div style="font-size: 15px; color: #f5f5f4; font-weight: 700; margin-bottom: 6px;">The Bodega Cat Runs the Place</div>
+            <div style="font-size: 11px; color: #a8a29e; margin-bottom: 10px; line-height: 1.5;">Why the scrappiest person in the room usually wins — lessons from building Ideate...</div>
+            <div style="font-size: 10px; color: #78716c;">Mar 15, 2026 · Substack</div>
+          </div>
+          <!-- Side stack -->
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+            <div style="flex: 1; background: #292524; border-radius: 8px; padding: 14px;">
+              <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🎤 Next Talk</div>
+              <div style="font-size: 11px; color: #f5f5f4; font-weight: 600;">PhillyJS</div>
+              <div style="font-size: 10px; color: #78716c;">Apr 20</div>
+            </div>
+            <div style="flex: 1; background: #292524; border-radius: 8px; padding: 14px;">
+              <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🔨 Shipped</div>
+              <div style="font-size: 11px; color: #f5f5f4; font-weight: 600;">my-portfolio</div>
+              <div style="font-size: 10px; color: #78716c;">2d ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Asymmetric Feature</h3>
+      <p>Writing post gets a hero-sized card with summary; talk and code are smaller side items. Emphasizes your latest writing as the main draw.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>Key differences</h3>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>All approaches share</h4>
+      <ul>
+        <li>Items gracefully hide when empty (e.g., no talks yet)</li>
+        <li>Auto-fetched data — RSS for writing, GitHub API for repos</li>
+        <li>Server-side with revalidation (no client JS needed)</li>
+        <li>Uses existing th-* design tokens</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Trade-offs</h4>
+      <ul>
+        <li><strong>A</strong> — Most visual weight, takes up the most vertical space</li>
+        <li><strong>B</strong> — Least visual weight, but may feel too minimal between the identity cards and about section</li>
+        <li><strong>C</strong> — Best if writing is your primary content; awkward if there's only 1 side item</li>
+      </ul>
+    </div>
+  </div>
+</div>

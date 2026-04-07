@@ -1,0 +1,91 @@
+<h2>Adaptive Layout — Both States</h2>
+<p class="subtitle">The strip responds to how many items are available. Confirm both states look right.</p>
+
+<div class="section">
+  <h3>State 1: No upcoming talk (your current situation)</h3>
+  <p class="subtitle">Two-column equal split — writing + code</p>
+  <div class="mockup">
+    <div class="mockup-header">Homepage — Current State</div>
+    <div class="mockup-body" style="background: #0c0a09; padding: 24px;">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span style="color: #fbbf24; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Latest</span>
+      </div>
+      <div style="display: flex; gap: 14px;">
+        <!-- Writing -->
+        <div style="flex: 1; background: #1c1917; border-radius: 10px; padding: 20px; border-top: 3px solid #fbbf24;">
+          <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">✏️ New Post</div>
+          <div style="font-size: 15px; color: #f5f5f4; font-weight: 700; margin-bottom: 6px;">The Bodega Cat Runs the Place</div>
+          <div style="font-size: 11px; color: #a8a29e; margin-bottom: 10px; line-height: 1.5;">Why the scrappiest person in the room usually wins — lessons from building Ideate...</div>
+          <div style="font-size: 10px; color: #78716c;">Mar 15, 2026 · Substack</div>
+        </div>
+        <!-- GitHub -->
+        <div style="flex: 1; background: #1c1917; border-radius: 10px; padding: 20px; border-top: 3px solid #fbbf24;">
+          <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🔨 Shipped</div>
+          <div style="font-size: 15px; color: #f5f5f4; font-weight: 700; margin-bottom: 6px;">my-portfolio</div>
+          <div style="font-size: 11px; color: #a8a29e; margin-bottom: 10px; line-height: 1.5;">Next.js portfolio site with RSS feed aggregation, semantic design tokens, and responsive layout.</div>
+          <div style="font-size: 10px; color: #78716c;">Updated 2 days ago · TypeScript</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 32px;">
+  <h3>State 2: Talk available (future)</h3>
+  <p class="subtitle">Asymmetric layout — writing hero + side stack</p>
+  <div class="mockup">
+    <div class="mockup-header">Homepage — With Talk</div>
+    <div class="mockup-body" style="background: #0c0a09; padding: 24px;">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span style="color: #fbbf24; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Latest</span>
+      </div>
+      <div style="display: flex; gap: 14px;">
+        <!-- Writing (hero) -->
+        <div style="flex: 2; background: #1c1917; border-radius: 10px; padding: 20px; border-top: 3px solid #fbbf24;">
+          <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">✏️ New Post</div>
+          <div style="font-size: 15px; color: #f5f5f4; font-weight: 700; margin-bottom: 6px;">The Bodega Cat Runs the Place</div>
+          <div style="font-size: 11px; color: #a8a29e; margin-bottom: 10px; line-height: 1.5;">Why the scrappiest person in the room usually wins — lessons from building Ideate...</div>
+          <div style="font-size: 10px; color: #78716c;">Mar 15, 2026 · Substack</div>
+        </div>
+        <!-- Side stack -->
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
+          <div style="flex: 1; background: #1c1917; border-radius: 10px; padding: 16px;">
+            <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🎤 Next Talk</div>
+            <div style="font-size: 13px; color: #f5f5f4; font-weight: 600; margin-bottom: 4px;">AI in Creative Workflows</div>
+            <div style="font-size: 10px; color: #78716c;">Apr 20, 2026 · PhillyJS</div>
+          </div>
+          <div style="flex: 1; background: #1c1917; border-radius: 10px; padding: 16px;">
+            <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🔨 Shipped</div>
+            <div style="font-size: 13px; color: #f5f5f4; font-weight: 600; margin-bottom: 4px;">my-portfolio</div>
+            <div style="font-size: 10px; color: #78716c;">Updated 2d ago · TypeScript</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 32px;">
+  <h3>Mobile behavior (both states)</h3>
+  <div class="mockup">
+    <div class="mockup-header">Mobile — Stacks Vertically</div>
+    <div class="mockup-body" style="background: #0c0a09; padding: 20px; max-width: 360px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 14px;">
+        <span style="color: #fbbf24; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Latest</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="background: #1c1917; border-radius: 10px; padding: 16px; border-top: 3px solid #fbbf24;">
+          <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">✏️ New Post</div>
+          <div style="font-size: 14px; color: #f5f5f4; font-weight: 700; margin-bottom: 4px;">The Bodega Cat Runs the Place</div>
+          <div style="font-size: 11px; color: #a8a29e; line-height: 1.5;">Why the scrappiest person in the room usually wins...</div>
+          <div style="font-size: 10px; color: #78716c; margin-top: 6px;">Mar 15, 2026 · Substack</div>
+        </div>
+        <div style="background: #1c1917; border-radius: 10px; padding: 16px;">
+          <div style="font-size: 9px; color: #78716c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">🔨 Shipped</div>
+          <div style="font-size: 14px; color: #f5f5f4; font-weight: 700; margin-bottom: 4px;">my-portfolio</div>
+          <div style="font-size: 10px; color: #78716c;">Updated 2d ago · TypeScript</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
