@@ -5,20 +5,12 @@ import { PageHeader } from "@/components/ui/PageHeader"
 import { Section } from "@/components/ui/Section"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { getNextTalk, talks, type Talk } from "@/lib/data"
+import { formatDate } from "@/lib/formatDate"
 
 export const metadata: Metadata = {
   title: "Speaking",
   description:
     "Conference talks, panels, and workshops by Waskar Paulino on AI, creative coding, and startup leadership.",
-}
-
-function formatDate(iso: string): string {
-  const [year, month, day] = iso.split("-").map(Number)
-  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  })
 }
 
 function TalkItem({ talk }: { talk: Talk }) {

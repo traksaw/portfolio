@@ -14,9 +14,36 @@
 
 import dynamic from "next/dynamic"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { Component, useEffect, useState, type ReactNode } from "react"
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false })
+
+/**
+ * Catches render/mount errors from the WebGL scene — e.g. a GPU-blocklisted
+ * or locked-down machine where @react-three/fiber's Canvas throws while
+ * creating a WebGL context — and falls back to the static poster instead of
+ * taking down the whole hero (and the rest of the page, since Next.js error
+ * boundaries are per-segment, not per-component).
+ */
+class WebGLErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false }
+
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error: unknown) {
+    console.error("HeroScene failed to render, falling back to poster:", error)
+  }
+
+  render() {
+    if (this.state.hasError) return <GalaxyPoster />
+    return this.props.children
+  }
+}
 
 function GalaxyPoster() {
   return (
@@ -62,5 +89,9 @@ export function HeroSceneLoader() {
 
   if (reduced === null) return null
   if (reduced) return <GalaxyPoster />
-  return <HeroScene />
+  return (
+    <WebGLErrorBoundary>
+      <HeroScene />
+    </WebGLErrorBoundary>
+  )
 }

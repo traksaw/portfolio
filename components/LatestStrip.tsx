@@ -10,6 +10,7 @@
 import { getWritingPosts, type WritingPost } from "@/lib/writing"
 import { getLatestRepo, languageColor, type GitHubRepo } from "@/lib/github"
 import { getNextTalk, type Talk } from "@/lib/data"
+import { formatDate } from "@/lib/formatDate"
 
 // ── Helpers ──────────────────────────────────────────────
 
@@ -27,14 +28,6 @@ function readTime(text: string): string {
   const words = text.split(/\s+/).length
   const mins = Math.max(1, Math.round(words / 200))
   return `${mins} min read`
-}
-
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  })
 }
 
 // ── Card wrapper ────────────────────────────────────────

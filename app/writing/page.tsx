@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import { getWritingPosts } from "@/lib/writing"
+import { formatDate } from "@/lib/formatDate"
 import { Badge } from "@/components/ui/Badge"
 import { ButtonLink } from "@/components/ui/ButtonLink"
 import { PageHeader } from "@/components/ui/PageHeader"
@@ -11,14 +12,6 @@ export const metadata: Metadata = {
   title: "Writing",
   description:
     "Essays and stories about founding a startup, building in public, and the creative process.",
-}
-
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  })
 }
 
 export default async function WritingPage() {
