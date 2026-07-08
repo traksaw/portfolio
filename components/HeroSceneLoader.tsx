@@ -7,13 +7,14 @@
  * next/dynamic(..., { ssr: false }) can't be called inside a
  * Server Component, so it lives here instead.
  *
- * Also owns the prefers-reduced-motion decision — when reduced
- * motion is requested we never mount the animated canvas and
- * render the static galaxy poster instead.
+ * Also owns the prefers-reduced-motion decision. Unlike the old
+ * ambient scene, the constellation is a functional navigation
+ * surface, so reduced motion does NOT swap it for a poster — it
+ * mounts the same interactive scene with animation disabled
+ * (see HeroScene's `reduced` prop).
  * ────────────────────────────────────────────────────────── */
 
 import dynamic from "next/dynamic"
-import Image from "next/image"
 import { Component, useEffect, useState, type ReactNode } from "react"
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false })
@@ -21,9 +22,9 @@ const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false })
 /**
  * Catches render/mount errors from the WebGL scene — e.g. a GPU-blocklisted
  * or locked-down machine where @react-three/fiber's Canvas throws while
- * creating a WebGL context — and falls back to the static poster instead of
- * taking down the whole hero (and the rest of the page, since Next.js error
- * boundaries are per-segment, not per-component).
+ * creating a WebGL context — and renders nothing extra in the hero instead of
+ * taking down the whole page. Every project is still reachable via the
+ * ProjectGrid one scroll down, so no fallback constellation is needed here.
  */
 class WebGLErrorBoundary extends Component<
   { children: ReactNode },
@@ -36,43 +37,13 @@ class WebGLErrorBoundary extends Component<
   }
 
   componentDidCatch(error: unknown) {
-    console.error("HeroScene failed to render, falling back to poster:", error)
+    console.error("HeroScene failed to render, hiding constellation:", error)
   }
 
   render() {
-    if (this.state.hasError) return <GalaxyPoster />
+    if (this.state.hasError) return null
     return this.props.children
   }
-}
-
-function GalaxyPoster() {
-  return (
-    <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      <Image
-        src="/projects/dj-visualizer/galaxy-mode.png"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        // Zoom into the galaxy (right of centre in the reference still) so the
-        // DJ-controls panel is cropped out of frame.
-        style={{
-          objectFit: "cover",
-          objectPosition: "center",
-          transform: "scale(1.9)",
-          transformOrigin: "62% 45%",
-        }}
-        className="opacity-45"
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(60% 55% at 50% 45%, color-mix(in srgb, var(--th-surface) 82%, transparent) 0%, color-mix(in srgb, var(--th-surface) 34%, transparent) 55%, transparent 100%)",
-        }}
-      />
-    </div>
-  )
 }
 
 export function HeroSceneLoader() {
@@ -88,10 +59,9 @@ export function HeroSceneLoader() {
   }, [])
 
   if (reduced === null) return null
-  if (reduced) return <GalaxyPoster />
   return (
     <WebGLErrorBoundary>
-      <HeroScene />
+      <HeroScene reduced={reduced} />
     </WebGLErrorBoundary>
   )
 }
