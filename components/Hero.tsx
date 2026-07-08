@@ -1,8 +1,11 @@
 import { ButtonLink } from "./ui/ButtonLink"
+import { HeroSceneLoader } from "./HeroSceneLoader"
 
 export function Hero() {
   return (
-    <section className="py-24 text-center sm:py-32">
+    <section className="relative isolate overflow-hidden py-24 text-center sm:py-32">
+      <HeroSceneLoader />
+
       <h1 className="text-5xl font-bold leading-tight text-th-heading sm:text-6xl lg:text-7xl">
         Waskar Paulino
       </h1>
