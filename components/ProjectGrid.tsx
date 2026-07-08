@@ -27,12 +27,16 @@ export function ProjectGrid() {
           techStack={["Next.js", "TypeScript", "CSS Modules"]}
           liveLink="https://backagainstthewall.vercel.app/"
           githubLink="https://github.com/traksaw/backAgainstTheWall"
+          imageUrl="/projects/back-against-the-wall/quiz-experience.png"
+          imageAlt="Back Against the Wall quiz experience"
         />
         <ProjectCard
           title="DJ Visualizer"
           description="A live-coded, real-time audio visualizer and effects processor for DJs, built with the Web Audio API and p5.js. Performed live at Indy Hall Philadelphia, driving visuals off a Pioneer DDJ-REV1 in front of an audience."
           techStack={["JavaScript", "Web Audio API", "p5.js"]}
           githubLink="https://github.com/philaconvalley/djVisualizer"
+          imageUrl="/projects/dj-visualizer/spectrum-bars.png"
+          imageAlt="DJ Visualizer spectrum bars mode reacting to audio"
         />
         <ProjectCard
           title="KarMi"
@@ -46,6 +50,8 @@ export function ProjectGrid() {
           description="Three AI personalities debate your purchase decisions in real time before checkout, streaming token-by-token. Built live in 4 hours with Victor Jackson for CodeTV's Web Dev Challenge S2.E12, sponsored by OpenRouter."
           techStack={["Chrome Extension", "OpenRouter", "Webpack", "Streaming AI"]}
           githubLink="https://github.com/philaconvalley/shoppingDebateChromeExtension"
+          imageUrl="/projects/shopping-debate/debate-demo.jpg"
+          imageAlt="Shopping Debate live demo at CodeTV's Web Dev Challenge"
         />
         <ProjectCard
           title="PhilaCon Valley"
@@ -53,6 +59,8 @@ export function ProjectGrid() {
           techStack={["Astro", "Tailwind CSS", "Alpine.js"]}
           liveLink="https://philaconvalley.com"
           githubLink="https://github.com/philaconvalley/website"
+          imageUrl="/projects/philacon-valley/homepage.png"
+          imageAlt="PhilaCon Valley homepage"
         />
       </div>
     </Section>
