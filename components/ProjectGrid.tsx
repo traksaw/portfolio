@@ -29,10 +29,10 @@ export function ProjectGrid() {
           githubLink="https://github.com/traksaw/backAgainstTheWall"
         />
         <ProjectCard
-          title="JS DJ Visualizer"
-          description="A real-time audio visualizer and processor for DJs, built with the Web Audio API and Canvas for live performances and music analysis."
-          techStack={["JavaScript", "Web Audio API", "Canvas"]}
-          githubLink="https://github.com/traksaw/jsDJVisualizer"
+          title="DJ Visualizer"
+          description="A live-coded, real-time audio visualizer and effects processor for DJs, built with the Web Audio API and p5.js. Performed live at Indy Hall Philadelphia, driving visuals off a Pioneer DDJ-REV1 in front of an audience."
+          techStack={["JavaScript", "Web Audio API", "p5.js"]}
+          githubLink="https://github.com/philaconvalley/djVisualizer"
         />
         <ProjectCard
           title="KarMi"
@@ -40,6 +40,19 @@ export function ProjectGrid() {
           techStack={["HTML", "CSS", "JavaScript"]}
           liveLink="https://purityinbw.netlify.app/"
           githubLink="https://github.com/traksaw/KarMi"
+        />
+        <ProjectCard
+          title="Shopping Debate"
+          description="Three AI personalities debate your purchase decisions in real time before checkout, streaming token-by-token. Built live in 4 hours with Victor Jackson for CodeTV's Web Dev Challenge S2.E12, sponsored by OpenRouter."
+          techStack={["Chrome Extension", "OpenRouter", "Webpack", "Streaming AI"]}
+          githubLink="https://github.com/philaconvalley/shoppingDebateChromeExtension"
+        />
+        <ProjectCard
+          title="PhilaCon Valley"
+          description="A Philadelphia tech community for Black, Brown, LGBTQIA+, and underrepresented technologists — by us, for us. Founded and lead this; named a 2025 Technical.ly REALlist Innovator for it."
+          techStack={["Astro", "Tailwind CSS", "Alpine.js"]}
+          liveLink="https://philaconvalley.com"
+          githubLink="https://github.com/philaconvalley/website"
         />
       </div>
     </Section>
