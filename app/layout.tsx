@@ -14,11 +14,12 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Waskar Paulino | CTO, Speaker, DJ",
+    default: "Waskar Paulino | Software Engineer, Speaker, DJ",
     template: "%s | Waskar Paulino",
   },
   description:
-    "I build AI tools for creative teams, write about the messy middle of founding a startup, and DJ on the weekends.",
+    "Creative technologist building AI tools and community platforms, teaching what I learn, and DJing on the weekends.",
+  // TODO: update metadataBase once the custom domain is live (see plan §6 — deployment)
   metadataBase: new URL("https://waskarmiguelpaulino.netlify.app"),
 }
 

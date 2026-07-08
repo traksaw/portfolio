@@ -17,13 +17,13 @@ export interface IdentityLane {
 export const identityLanes: IdentityLane[] = [
   {
     label: "Builder",
-    body: "CTO of Ideate. AI-powered creative workspace for design teams.",
+    body: "Full-stack engineer and creative technologist — ships production AI tools, community platforms, and native apps.",
     cta: "View projects",
     href: "/projects",
   },
   {
     label: "Speaker",
-    body: "PhillyJS, Black Tech Philly panels, community events.",
+    body: "Microsoft AI Community Conference, PhillyJS, Black Tech Philly panels, community events.",
     cta: "See talks",
     href: "/speaking",
   },

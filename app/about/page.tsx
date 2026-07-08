@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/ui/PageHeader"
 export const metadata: Metadata = {
   title: "About",
   description:
-    "From a bodega in Philly to CTO of Ideate -- the story of Waskar Paulino.",
+    "From a bodega in Philly to Apple Genius to CTO -- the story of Waskar Paulino.",
 }
 
 export default function AboutPage() {
@@ -32,6 +32,15 @@ export default function AboutPage() {
         learned the power of empathy, storytelling, and the intersection of tech
         and people. That foundation led me into full stack development and tech
         education.
+      </p>
+      <p className="mt-6 text-lg leading-relaxed text-th-body">
+        Most recently, I was CTO of Ideate Better, Inc., an early-stage
+        AI/SaaS startup — sole engineer, building the entire production
+        architecture from scratch across three interconnected products. I
+        helped close an accelerator investment after a rigorous diligence
+        process, mentored an extern engineering cohort, and turned a live AI
+        infrastructure cost overrun into a lasting cost-control discipline
+        built into production.
       </p>
       <p className="mt-6 text-lg leading-relaxed text-th-body">
         Today, I build tools and experiences that uplift underrepresented
