@@ -45,7 +45,16 @@ export interface Talk {
   url?: string
 }
 
-export const talks: Talk[] = []
+export const talks: Talk[] = [
+  {
+    title: "From Pixels to Meaning: Building an AI Content Pipeline",
+    description:
+      "On turning unstructured creative content into something a machine can actually reason about.",
+    date: "2026-06-26",
+    venue: "Microsoft AI Community Conference, New York, NY",
+    url: "https://www.communitydays.org/event/2026-06-26/ai-community-conference-new-york#sessions",
+  },
+]
 
 export function getNextTalk(): Talk | null {
   const now = Date.now()
