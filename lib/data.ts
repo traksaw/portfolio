@@ -77,20 +77,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "hit.it",
-    description:
-      "A full-stack music collaboration platform where musicians upload, remix, and share multi-track audio projects with real-time waveform visualization.",
-    techStack: ["SvelteKit", "Express", "MongoDB", "Socket.IO"],
-    githubLink: "https://github.com/traksaw/hitit",
-  },
-  {
-    title: "riffMemo",
-    description:
-      "A native iOS app that rebuilds Apple's discontinued Music Memos — one-tap recording with automatic tempo and key detection for capturing musical ideas.",
-    techStack: ["Swift", "SwiftUI", "AVFoundation", "SwiftData"],
-    githubLink: "https://github.com/traksaw/riffMemo",
-  },
-  {
     title: "Back Against the Wall",
     description:
       "An interactive short-film experience that helps users discover their financial archetype through narrative-driven decision making.",
@@ -108,14 +94,6 @@ export const projects: Project[] = [
     githubLink: "https://github.com/philaconvalley/djVisualizer",
     imageUrl: "/projects/dj-visualizer/spectrum-bars.png",
     imageAlt: "DJ Visualizer spectrum bars mode reacting to audio",
-  },
-  {
-    title: "KarMi",
-    description:
-      "A minimalistic brand website for Purity by KarMi, a sustainable lifestyle brand promoting clean and eco-conscious living.",
-    techStack: ["HTML", "CSS", "JavaScript"],
-    liveLink: "https://purityinbw.netlify.app/",
-    githubLink: "https://github.com/traksaw/KarMi",
   },
   {
     title: "Shopping Debate",
