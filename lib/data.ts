@@ -100,6 +100,7 @@ export const projects: Project[] = [
     description:
       "A live-coded, real-time audio visualizer and effects processor for DJs, built with the Web Audio API and p5.js. Performed live at Indy Hall Philadelphia, driving visuals off a Pioneer DDJ-REV1 in front of an audience.",
     techStack: ["JavaScript", "Web Audio API", "p5.js"],
+    liveLink: "https://dj-visualizer.netlify.app",
     githubLink: "https://github.com/philaconvalley/djVisualizer",
     imageUrl: "/projects/dj-visualizer/spectrum-bars.png",
     imageAlt: "DJ Visualizer spectrum bars mode reacting to audio",
