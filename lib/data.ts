@@ -87,6 +87,15 @@ export const projects: Project[] = [
     imageAlt: "Back Against the Wall quiz experience",
   },
   {
+    title: "riffMemo",
+    description:
+      "A native iOS app that rebuilds Apple's discontinued Music Memos — one-tap recording with automatic tempo and key detection for capturing musical ideas.",
+    techStack: ["Swift", "SwiftUI", "AVFoundation", "SwiftData"],
+    githubLink: "https://github.com/traksaw/riffMemo",
+    imageUrl: "/projects/riffmemo/app-screens.png",
+    imageAlt: "riffMemo — recording a take and viewing auto-detected tempo and key",
+  },
+  {
     title: "DJ Visualizer",
     description:
       "A live-coded, real-time audio visualizer and effects processor for DJs, built with the Web Audio API and p5.js. Performed live at Indy Hall Philadelphia, driving visuals off a Pioneer DDJ-REV1 in front of an audience.",
