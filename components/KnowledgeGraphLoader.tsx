@@ -1,35 +1,34 @@
 "use client"
 
 /* ──────────────────────────────────────────────────────────
- * HeroSceneLoader
+ * KnowledgeGraphLoader
  *
- * Client wrapper that keeps Hero.tsx a Server Component:
- * next/dynamic(..., { ssr: false }) can't be called inside a
- * Server Component, so it lives here instead.
- *
- * Also owns the prefers-reduced-motion decision. Unlike the old
- * ambient scene, the constellation is a functional navigation
- * surface, so reduced motion does NOT swap it for a poster — it
- * mounts the same interactive scene with animation disabled
- * (see HeroScene's `reduced` prop).
+ * Client wrapper that keeps KnowledgeGraph.tsx a Server Component:
+ * next/dynamic(..., { ssr: false }) can't be called inside a Server
+ * Component, so it lives here instead. Also owns the WebGL error
+ * boundary and the prefers-reduced-motion decision (same pattern the
+ * old hero constellation used).
  * ────────────────────────────────────────────────────────── */
 
 import dynamic from "next/dynamic"
 import { Component, useEffect, useState, type ReactNode } from "react"
 
-const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false })
+import type { Project, Talk } from "@/lib/data"
+import type { WritingPost } from "@/lib/writing"
+
+const KnowledgeGraphScene = dynamic(() => import("./KnowledgeGraphScene"), {
+  ssr: false,
+})
 
 /**
  * Catches render/mount errors from the WebGL scene — e.g. a GPU-blocklisted
  * or locked-down machine where @react-three/fiber's Canvas throws while
- * creating a WebGL context — and renders nothing extra in the hero instead of
- * taking down the whole page. Every project is still reachable via the
- * ProjectGrid one scroll down, so no fallback constellation is needed here.
+ * creating a WebGL context — and renders nothing instead of taking down
+ * the whole page. Every project/talk/post is still reachable via the
+ * regular pages (Projects, Speaking, Writing nav links), so no fallback
+ * graph is needed here.
  */
-class WebGLErrorBoundary extends Component<
-  { children: ReactNode },
-  { hasError: boolean }
-> {
+class WebGLErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   state = { hasError: false }
 
   static getDerivedStateFromError() {
@@ -37,7 +36,7 @@ class WebGLErrorBoundary extends Component<
   }
 
   componentDidCatch(error: unknown) {
-    console.error("HeroScene failed to render, hiding constellation:", error)
+    console.error("KnowledgeGraphScene failed to render, hiding the graph:", error)
   }
 
   render() {
@@ -46,7 +45,15 @@ class WebGLErrorBoundary extends Component<
   }
 }
 
-export function HeroSceneLoader() {
+export function KnowledgeGraphLoader({
+  projects,
+  talks,
+  posts,
+}: {
+  projects: Project[]
+  talks: Talk[]
+  posts: WritingPost[]
+}) {
   // null = not yet decided (SSR + first paint render nothing → no mismatch).
   const [reduced, setReduced] = useState<boolean | null>(null)
 
@@ -61,7 +68,7 @@ export function HeroSceneLoader() {
   if (reduced === null) return null
   return (
     <WebGLErrorBoundary>
-      <HeroScene reduced={reduced} />
+      <KnowledgeGraphScene projects={projects} talks={talks} posts={posts} reduced={reduced} />
     </WebGLErrorBoundary>
   )
 }

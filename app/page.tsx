@@ -1,5 +1,6 @@
 /* app/page.tsx */
 import { Hero } from "@/components/Hero"
+import { KnowledgeGraph } from "@/components/KnowledgeGraph"
 import { IdentityCards } from "@/components/IdentityCards"
 import { ProcessStrip } from "@/components/ProcessStrip"
 import { LatestStrip } from "@/components/LatestStrip"
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <KnowledgeGraph />
       <IdentityCards />
       <ProcessStrip />
       <LatestStrip />
