@@ -20,7 +20,7 @@ export interface LayoutEdge {
 
 export type LayoutPositions = Record<string, [number, number]>
 
-const REPEL = 2.4
+const REPEL = 3.4
 const SPRING = 0.1
 const CENTER = 0.012
 const ROOT_CENTER = 0.25

@@ -54,6 +54,25 @@ const HUBS: HubDef[] = [
 
 const HUB_SEED_ANGLES: Record<string, number> = { builder: 90, speaker: 210, writer: 330 }
 
+/**
+ * Deterministic hash → [0, 1), used instead of Math.random() to seed the
+ * simulation. A random seed meant the layout came out differently on every
+ * page load — sometimes settling into a lopsided arrangement (a hub with
+ * only one satellite, like Speaker, has little "weight" holding it in
+ * place and can get pushed off by repulsion from a bigger cluster). Same
+ * node id always hashes to the same seed, so the physics still self-
+ * organizes the layout, but every visitor sees the same, verified-good
+ * result instead of whatever a given run's randomness produced.
+ */
+function hashUnit(input: string): number {
+  let h = 2166136261
+  for (let i = 0; i < input.length; i++) {
+    h ^= input.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return (h >>> 0) / 4294967296
+}
+
 interface GraphSatellite {
   id: string
   hub: string
@@ -119,8 +138,8 @@ function useGraphLayout(projects: Project[], talks: Talk[], posts: WritingPost[]
     ]
 
     const edges: LayoutEdge[] = [
-      ...HUBS.map((h) => ({ from: "me", to: h.id, rest: 2.6 })),
-      ...satellites.map((s) => ({ from: s.hub, to: s.id, rest: 2.0 })),
+      ...HUBS.map((h) => ({ from: "me", to: h.id, rest: 3.2 })),
+      ...satellites.map((s) => ({ from: s.hub, to: s.id, rest: 2.4 })),
     ]
 
     // Seed positions only need to be roughly right — near their intended
@@ -136,8 +155,14 @@ function useGraphLayout(projects: Project[], talks: Talk[], posts: WritingPost[]
       const i = satelliteCountByHub[s.hub] ?? 0
       satelliteCountByHub[s.hub] = i + 1
       const baseAngle = (HUB_SEED_ANGLES[s.hub] * Math.PI) / 180
-      const jitterAngle = baseAngle + (Math.random() - 0.5) * 1.4
-      const r = 4.6 + Math.random() * 1.4
+      // Tighter jitter than the first pass (±0.5 rad / a fixed radius band
+      // instead of ±0.7) — a single-satellite hub like Speaker has no
+      // sibling satellites to help anchor its angle, so a wide jitter let
+      // it drift into another hub's territory. Keeping every satellite
+      // seeded closer to its hub's direction gives the simulation a
+      // cleaner starting basin to settle into.
+      const jitterAngle = baseAngle + (hashUnit(`${s.id}:a`) - 0.5) * 1.0
+      const r = 4.4 + hashUnit(`${s.id}:r`) * 0.9
       seed[s.id] = [Math.cos(jitterAngle) * r, Math.sin(jitterAngle) * r]
       satelliteZ[s.id] = Math.sin(i * 1.7) * 0.4
     }
@@ -304,7 +329,7 @@ function GraphNode({
               borderRadius: "12px",
               background: "var(--th-surface-card)",
               border: "1px solid var(--th-line)",
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12)",
               textAlign: "left",
             }}
           >
@@ -314,7 +339,7 @@ function GraphNode({
             <p
               style={{
                 margin: "6px 0 0",
-                fontSize: "12.5px",
+                fontSize: "12px",
                 lineHeight: 1.5,
                 color: "var(--th-body)",
               }}
