@@ -2,7 +2,7 @@
 
 A multi-purpose personal site for hiring managers, conference organizers, and readers/followers. Built with Next.js 15, React 19, and Tailwind v4.
 
-Live: [waskarmiguelpaulino.netlify.app](https://waskarmiguelpaulino.netlify.app)
+Live: [waskarpaulino.com](https://waskarpaulino.com)
 
 ---
 
