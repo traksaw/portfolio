@@ -110,7 +110,7 @@ body {
   color: var(--th-heading);
 }
 
-/* ── Identity-card entrance ── */
+/* ── Shared rise-in entrance (identity cards, hero) ── */
 @keyframes card-rise {
   from {
     opacity: 0;
@@ -122,12 +122,14 @@ body {
   }
 }
 
-.identity-card {
+.identity-card,
+.rise-in {
   animation: card-rise 0.5s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .identity-card {
+  .identity-card,
+  .rise-in {
     animation: none;
   }
 }
