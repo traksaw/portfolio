@@ -4,8 +4,8 @@
  * HeroScene — interactive project constellation
  *
  * One star per real project (see `projects` in lib/data.ts),
- * hand-placed in 3D space to frame the hero copy. The whole
- * thing is a functional navigation surface, not decoration:
+ * procedurally placed around a ring in 3D space to frame the hero
+ * copy. The whole thing is a functional navigation surface, not decoration:
  *   • hover a star  → its title + description appear beside it,
  *                     the node lights up amber, cursor → pointer
  *   • click a star  → opens the project (live link if it has
@@ -34,23 +34,35 @@ const BASE_COLOR = "#94a3b8"
 type Vec3 = [number, number, number]
 
 /**
- * Hand-placed positions, one per project (order matches `projects`).
- * Arranged as a loose ring that frames the centered hero copy, with
- * varied depth (z) for a real 3D constellation feel. Kept clear of the
- * dead-center so hover targets and tooltips don't sit under the h1.
+ * Generates one star position per project, evenly spaced around an
+ * elliptical ring that frames the centered hero copy (loose sphere, hollow
+ * center — matches the previous hand-placed layout's general shape). Depth
+ * (z) alternates via a second harmonic so the ring reads as a real 3D
+ * constellation rather than a flat oval.
+ *
+ * Deriving positions from `count` instead of a hand-placed, index-matched
+ * lookup table means the star count always tracks `projects.length` in
+ * lib/data.ts — no risk of silent index mis-mapping or out-of-bounds reads
+ * when a project is added, removed, or reordered.
  */
-const NODE_POSITIONS: Vec3[] = [
-  [-4.0, 1.7, -0.6], // hit.it
-  [-4.4, -1.2, 0.5], // riffMemo
-  [-2.1, 2.5, 0.3], // Back Against the Wall
-  [0.2, -2.6, -0.4], // DJ Visualizer
-  [2.2, 2.5, 0.4], // KarMi
-  [4.4, -1.1, -0.5], // Shopping Debate
-  [4.0, 1.7, 0.6], // PhilaCon Valley
-]
+function generateNodePositions(count: number): Vec3[] {
+  const RADIUS_X = 4.2
+  const RADIUS_Y = 2.4
+  const DEPTH = 0.5
+  // Starting on the right (angle 0) keeps every vertex off the vertical
+  // centerline (x = 0) for typical star counts, so no star sits directly
+  // above/below the centered hero copy — same clearance the old hand-placed
+  // layout kept around the dead-center.
+  const START_ANGLE = 0
 
-/** Perimeter order for the faint connecting lines (traces the ring). */
-const LINK_ORDER = [1, 0, 2, 4, 6, 5, 3, 1]
+  return Array.from({ length: count }, (_, i) => {
+    const angle = START_ANGLE + (i / count) * Math.PI * 2
+    const x = Math.cos(angle) * RADIUS_X
+    const y = Math.sin(angle) * RADIUS_Y
+    const z = Math.sin(angle * 2) * DEPTH
+    return [x, y, z] as Vec3
+  })
+}
 
 function projectUrl(project: Project): string | undefined {
   return project.liveLink ?? project.githubLink
@@ -178,7 +190,10 @@ function Constellation({ reduced }: { reduced: boolean }) {
     group.rotation.x = Math.sin(t * 0.1) * 0.08
   })
 
-  const linkPoints = LINK_ORDER.map((i) => NODE_POSITIONS[i])
+  const nodePositions = generateNodePositions(projects.length)
+  // Ring order matches generation order, so the connecting line just walks
+  // the array in sequence and closes the loop back to the first star.
+  const linkPoints = [...nodePositions, nodePositions[0]]
 
   return (
     <>
@@ -203,7 +218,7 @@ function Constellation({ reduced }: { reduced: boolean }) {
           <ProjectStar
             key={project.title}
             project={project}
-            position={NODE_POSITIONS[i]}
+            position={nodePositions[i]}
             reduced={reduced}
           />
         ))}
