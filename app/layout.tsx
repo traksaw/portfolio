@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { DM_Sans } from "next/font/google"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
+import { PostHogProvider } from "@/components/PostHogProvider"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -29,9 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${dmSans.variable} font-sans bg-th-surface text-th-body`}
       >
-        <Navbar />
-        <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-12">{children}</main>
-        <Footer />
+        <PostHogProvider>
+          <Navbar />
+          <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-12">{children}</main>
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   )
