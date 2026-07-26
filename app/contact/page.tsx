@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { ButtonLink } from "@/components/ui/ButtonLink"
+import { TrackedButtonLink } from "@/components/ui/TrackedButtonLink"
 import { PageHeader } from "@/components/ui/PageHeader"
 
 export const metadata: Metadata = {
@@ -18,9 +18,13 @@ export default function ContactPage() {
         centered
       />
       <div className="mt-10 text-center">
-        <ButtonLink href="mailto:workwithwaskar@gmail.com" external>
+        <TrackedButtonLink
+          href="mailto:workwithwaskar@gmail.com"
+          external
+          event="contact_email_clicked"
+        >
           Send Me an Email
-        </ButtonLink>
+        </TrackedButtonLink>
       </div>
     </section>
   )

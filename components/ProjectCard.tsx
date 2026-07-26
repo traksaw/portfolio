@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image"
+import posthog from "posthog-js"
 
 import { Badge } from "./ui/Badge"
 
@@ -48,6 +51,7 @@ export function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className="text-th-heading underline decoration-th-line-hover underline-offset-4 transition-colors hover:decoration-th-accent"
+            onClick={() => posthog.capture("project_live_site_clicked", { project_title: title })}
           >
             Live Site
           </a>
@@ -58,6 +62,7 @@ export function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className="text-th-heading underline decoration-th-line-hover underline-offset-4 transition-colors hover:decoration-th-accent"
+            onClick={() => posthog.capture("project_github_clicked", { project_title: title })}
           >
             GitHub
           </a>

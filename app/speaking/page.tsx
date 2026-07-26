@@ -1,44 +1,16 @@
 import type { Metadata } from "next"
 
-import { ButtonLink } from "@/components/ui/ButtonLink"
+import { TrackedButtonLink } from "@/components/ui/TrackedButtonLink"
 import { PageHeader } from "@/components/ui/PageHeader"
 import { Section } from "@/components/ui/Section"
 import { SectionHeading } from "@/components/ui/SectionHeading"
-import { getNextTalk, talks, type Talk } from "@/lib/data"
-import { formatDate } from "@/lib/formatDate"
+import { TalkItem } from "@/components/TalkItem"
+import { getNextTalk, talks } from "@/lib/data"
 
 export const metadata: Metadata = {
   title: "Speaking",
   description:
     "Conference talks, panels, and workshops by Waskar Paulino on AI, creative coding, and startup leadership.",
-}
-
-function TalkItem({ talk }: { talk: Talk }) {
-  return (
-    <article className="rounded-2xl border border-th-line bg-th-surface-card p-6 shadow-lg shadow-th-shadow transition-all duration-300 hover:-translate-y-1 hover:border-th-line-hover hover:shadow-xl sm:p-8">
-      <h3 className="text-lg font-semibold text-th-heading sm:text-xl">
-        {talk.url ? (
-          <a
-            href={talk.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-th-accent"
-          >
-            {talk.title}
-          </a>
-        ) : (
-          talk.title
-        )}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-th-body sm:text-base">
-        {talk.description}
-      </p>
-      <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-th-muted">
-        <span>{formatDate(talk.date)}</span>
-        <span>{talk.venue}</span>
-      </div>
-    </article>
-  )
 }
 
 export default function SpeakingPage() {
@@ -88,7 +60,9 @@ export default function SpeakingPage() {
           from you.
         </p>
         <div className="mt-8">
-          <ButtonLink href="/contact">Get in touch</ButtonLink>
+          <TrackedButtonLink href="/contact" event="book_speaking_clicked">
+            Get in touch
+          </TrackedButtonLink>
         </div>
       </Section>
     </section>

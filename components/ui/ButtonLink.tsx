@@ -8,6 +8,7 @@ interface ButtonLinkProps {
   external?: boolean
   children: React.ReactNode
   className?: string
+  onClick?: () => void
 }
 
 const variantStyles: Record<Variant, string> = {
@@ -28,6 +29,7 @@ export function ButtonLink({
   external = false,
   children,
   className = "",
+  onClick,
 }: ButtonLinkProps) {
   const styles = `${base} ${variantStyles[variant]} ${className}`
 
@@ -38,6 +40,7 @@ export function ButtonLink({
         target="_blank"
         rel="noopener noreferrer"
         className={styles}
+        onClick={onClick}
       >
         {children}
       </a>
@@ -45,7 +48,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={styles}>
+    <Link href={href} className={styles} onClick={onClick}>
       {children}
     </Link>
   )

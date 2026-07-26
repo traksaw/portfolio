@@ -1,3 +1,6 @@
+"use client"
+
+import posthog from "posthog-js"
 import { identityLanes } from "@/lib/data"
 import { ButtonLink } from "./ui/ButtonLink"
 
@@ -23,7 +26,12 @@ export function IdentityCards() {
 
             {/* ── CTA ── */}
             <div className="mt-8">
-              <ButtonLink href={lane.href} variant="ghost" className="w-full text-center">
+              <ButtonLink
+                href={lane.href}
+                variant="ghost"
+                className="w-full text-center"
+                onClick={() => posthog.capture("identity_card_cta_clicked", { card_label: lane.label })}
+              >
                 {lane.cta} &rarr;
               </ButtonLink>
             </div>

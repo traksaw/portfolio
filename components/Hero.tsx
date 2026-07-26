@@ -1,3 +1,6 @@
+"use client"
+
+import posthog from "posthog-js"
 import { ButtonLink } from "./ui/ButtonLink"
 
 export function Hero() {
@@ -29,8 +32,17 @@ export function Hero() {
         className="rise-in mt-10 flex flex-wrap items-center justify-center gap-4"
         style={{ animationDelay: "300ms" }}
       >
-        <ButtonLink href="/projects">See my projects &rarr;</ButtonLink>
-        <ButtonLink href="/speaking" variant="secondary">
+        <ButtonLink
+          href="/projects"
+          onClick={() => posthog.capture("hero_cta_clicked", { label: "See my projects" })}
+        >
+          See my projects &rarr;
+        </ButtonLink>
+        <ButtonLink
+          href="/speaking"
+          variant="secondary"
+          onClick={() => posthog.capture("hero_cta_clicked", { label: "See my talks" })}
+        >
           See my talks &rarr;
         </ButtonLink>
       </div>

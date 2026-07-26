@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 
-import { ButtonLink } from "@/components/ui/ButtonLink"
+import { TrackedButtonLink } from "@/components/ui/TrackedButtonLink"
 import { PageHeader } from "@/components/ui/PageHeader"
 
 export const metadata: Metadata = {
@@ -55,7 +55,9 @@ export default function AboutPage() {
         together.
       </p>
       <div className="mt-10">
-        <ButtonLink href="/contact">Get in touch</ButtonLink>
+        <TrackedButtonLink href="/contact" event="about_contact_clicked">
+          Get in touch
+        </TrackedButtonLink>
       </div>
     </section>
   )
