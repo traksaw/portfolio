@@ -6,7 +6,7 @@ import { Suspense, useEffect } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 
 const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
-const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com"
+const POSTHOG_UI_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com"
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -14,7 +14,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     // so a missing key never breaks the build or the live site.
     if (!POSTHOG_KEY || posthog.__loaded) return
     posthog.init(POSTHOG_KEY, {
-      api_host: POSTHOG_HOST,
+      // Routed through our own domain (see next.config.ts rewrites) so
+      // ad-blockers don't strip calls to a third-party analytics host.
+      api_host: "/ingest",
+      ui_host: POSTHOG_UI_HOST,
       person_profiles: "identified_only",
       capture_pageview: false, // captured manually below on App Router route changes
     })
