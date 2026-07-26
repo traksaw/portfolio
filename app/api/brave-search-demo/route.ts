@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         error:
-          "Demo not configured: set BRAVE_API_KEY and ANTHROPIC_API_KEY in .env.local (see .env.local.example).",
+          "Demo not configured: set BRAVE_API_KEY and ANTHROPIC_API_KEY in .env.local (see .env.example).",
       },
       { status: 500 },
     )
