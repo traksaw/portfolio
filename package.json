@@ -12,22 +12,27 @@
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.21",
     "ai": "^7.0.37",
-    "next": "15.4.11",
+    "next": "15.5.22",
     "posthog-js": "^1.407.2",
     "react": "19.2.7",
     "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "@eslint/eslintrc": "^3.3.6",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^9.39.5",
     "eslint-config-next": "15.4.4",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11",
-    "typescript": "^5"
+    "postcss": "^8.5.23",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss": "^8.5.23"
+    }
   }
 }
