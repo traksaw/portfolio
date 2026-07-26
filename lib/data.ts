@@ -77,6 +77,13 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Brave Search RAG Demo",
+    description:
+      "A retrieval-augmented-generation demo: queries the Brave Search API, then grounds a Claude-generated answer in the results with inline citations back to every source. Built with the Vercel AI SDK.",
+    techStack: ["Next.js", "Vercel AI SDK", "Claude", "Brave Search API", "TypeScript"],
+    liveLink: "/projects/brave-search-rag",
+  },
+  {
     title: "Back Against the Wall",
     description:
       "An interactive short-film experience that helps users discover their financial archetype through narrative-driven decision making.",
