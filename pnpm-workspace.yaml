@@ -1,0 +1,5 @@
+# pnpm 11 no longer reads the "pnpm" field in package.json, so overrides live here.
+# Both pnpm 10 and 11 read this file.
+overrides:
+  # next pins postcss 8.4.31, which has known advisories.
+  postcss: ^8.5.23
