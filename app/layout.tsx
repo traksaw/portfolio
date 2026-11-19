@@ -1,15 +1,19 @@
 /* app/layout.tsx */
 import "./globals.css"
 import type { Metadata } from "next"
-import { DM_Sans } from "next/font/google"
+import localFont from "next/font/local"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { PostHogProvider } from "@/components/PostHogProvider"
 import { SITE_URL } from "@/lib/site"
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Self-hosted so the build never needs Google Fonts to be reachable.
+// One variable file (Latin subset) covers weights 400–700.
+// Source: Google Fonts. License: app/fonts/DMSans-OFL.txt (SIL OFL 1.1).
+const dmSans = localFont({
+  src: "./fonts/DMSans-latin-wght.woff2",
+  weight: "400 700",
+  style: "normal",
   display: "swap",
   variable: "--font-sans",
 })
