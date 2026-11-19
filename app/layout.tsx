@@ -5,6 +5,7 @@ import { DM_Sans } from "next/font/google"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { PostHogProvider } from "@/components/PostHogProvider"
+import { SITE_URL } from "@/lib/site"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -20,8 +21,7 @@ export const metadata: Metadata = {
   },
   description:
     "Creative technologist building AI tools and community platforms, teaching what I learn, and DJing on the weekends.",
-  // TODO: update metadataBase once the custom domain is live (see plan §6 — deployment)
-  metadataBase: new URL("https://waskarmiguelpaulino.netlify.app"),
+  metadataBase: new URL(SITE_URL),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

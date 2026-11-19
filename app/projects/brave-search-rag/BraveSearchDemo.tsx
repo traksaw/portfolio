@@ -53,6 +53,7 @@ export function BraveSearchDemo() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          maxLength={300}
           placeholder="Ask something Brave Search can answer…"
           className="flex-1 rounded-full border border-th-line bg-th-surface px-5 py-3 text-th-body outline-none transition-colors focus:border-th-line-hover"
         />
