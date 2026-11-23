@@ -2,6 +2,7 @@ import { anthropic } from "@ai-sdk/anthropic"
 import { generateText } from "ai"
 import { NextResponse } from "next/server"
 import { z } from "zod"
+import { getClientIp, checkRateLimit } from "@/lib/rate-limit"
 
 export const runtime = "nodejs"
 
@@ -48,6 +49,12 @@ async function braveSearch(query: string, apiKey: string): Promise<BraveResult[]
 }
 
 export async function POST(req: Request) {
+  const visitorIP = getClientIp(req)
+  if (!checkRateLimit(visitorIP, Date.now())) return NextResponse.json(
+    { error: "You have exceeded your searches. Try again in 1 minute." },
+    { status: 429 },
+  )
+
   const braveKey = process.env.BRAVE_API_KEY
   const anthropicKey = process.env.ANTHROPIC_API_KEY
 
